@@ -1868,6 +1868,7 @@ function populateFeaturedSection(albums) {
         try {
           const folder = card.dataset.folder;
           if (!folder) {
+
             showToast('Invalid album folder', 'error');
             return;
           }
