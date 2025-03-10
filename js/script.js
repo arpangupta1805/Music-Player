@@ -2321,6 +2321,7 @@ function displayFeaturedPlaylists(albums) {
       });
     });
   } catch (error) {
+    console.log('Error displaying featured playlists:', error);
   }
 }
 
