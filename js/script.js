@@ -646,7 +646,7 @@ function updateLikedSongsDisplay() {
     validSongs.forEach(song => {
       likedSongsList.innerHTML += `
         <div class="liked-song-item" data-folder="${song.folder}" data-filename="${song.fileName}">
-          <img src='${server_url}/songs/${song.folder}/cover.jpg' alt='${song.folder} cover' onerror="this.src='/svg/music-note.svg';">
+          <img src='${server_url}/songs/${song.folder}/cover.jpg' alt='${song.folder} cover' >
           <div class="liked-song-info">
             <h4>${song.name || formatSongName(song.fileName)}</h4>
             <p>${song.folder}</p>
