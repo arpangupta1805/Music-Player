@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuneflow: User Dashboard</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/utility.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/svg/favicon.ico" type="image/x-icon">
+    <meta name="description" content="Tuneflow - User Dashboard">
+</head>
+<body>
+    <!-- Loading overlay -->
+    <div id="loading-overlay">
+        <div class="loader"></div>
+        <p>Loading your dashboard...</p>
+    </div>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo-container">
+            <img src="svg/music-note.svg" alt="Tuneflow Logo" class="logo-icon">
+            <h1>TUNEFLOW</h1>
+        </div>
+        <p class="humburger material-symbols-outlined">menu</p>
+        <div class="theme-toggle">
+            <span class="material-symbols-outlined" id="theme-icon">dark_mode</span>
+        </div>
+        <div class="user-menu">
+            <div class="user-dropdown">
+                <span class="material-symbols-outlined">account_circle</span>
+                <span class="username" id="user-name">User</span>
+                <span class="material-symbols-outlined">arrow_drop_down</span>
+                <div class="dropdown-menu">
+                    <a href="index.html" class="dropdown-item">Home</a>
+                    <a href="#" class="dropdown-item" id="logout-btn">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item active" data-section="profile">
+                    <span class="material-symbols-outlined">person</span>
+                    <span>Profile</span>
+                </li>
+                <li class="sidebar-item" data-section="favorites">
+                    <span class="material-symbols-outlined">favorite</span>
+                    <span>Favorites</span>
+                </li>
+                <li class="sidebar-item" data-section="recent">
+                    <span class="material-symbols-outlined">history</span>
+                    <span>Recently Played</span>
+                </li>
+                <li class="sidebar-item" data-section="playlists">
+                    <span class="material-symbols-outlined">playlist_play</span>
+                    <span>Playlists</span>
+                </li>
+                <li class="sidebar-item home-link">
+                    <a href="index.html">
+                        <span class="material-symbols-outlined">home</span>
+                        <span>Back to Home</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="dashboard-content">
+            <!-- Profile Section -->
+            <section id="profile-section" class="dashboard-section active">
+                <h2>Your Profile</h2>
+                <div class="profile-container">
+                    <div class="profile-header">
+                        <div class="profile-picture">
+                            <img id="profile-image" src="svg/default-profile.svg" alt="Profile Picture">
+                            <div class="profile-picture-overlay">
+                                <span class="material-symbols-outlined">edit</span>
+                            </div>
+                        </div>
+                        <div class="profile-info">
+                            <h3 id="profile-name">User Name</h3>
+                            <p id="profile-email">user@example.com</p>
+                        </div>
+                    </div>
+                    <div class="profile-form">
+                        <h3>Edit Profile</h3>
+                        <form id="profile-edit-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" placeholder="Your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="Your email">
+                            </div>
+                            <div class="form-group password-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" placeholder="New password (leave blank to keep current)">
+                            </div>
+                            <button type="submit" class="btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Favorites Section -->
+            <section id="favorites-section" class="dashboard-section">
+                <h2>Your Favorites</h2>
+                <div class="favorites-container">
+                    <div class="favorite-songs">
+                        <h3>Favorite Songs</h3>
+                        <div class="songs-list" id="favorite-songs-list">
+                            <!-- Favorite songs will be loaded here -->
+                            <div class="empty-state">
+                                <span class="material-symbols-outlined">music_note</span>
+                                <p>No favorite songs yet</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="favorite-albums">
+                        <h3>Favorite Albums</h3>
+                        <div class="albums-grid" id="favorite-albums-grid">
+                            <!-- Favorite albums will be loaded here -->
+                            <div class="empty-state">
+                                <span class="material-symbols-outlined">album</span>
+                                <p>No favorite albums yet</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recently Played Section -->
+            <section id="recent-section" class="dashboard-section">
+                <h2>Recently Played</h2>
+                <div class="recent-container">
+                    <div class="recent-songs-list" id="recent-songs-list">
+                        <!-- Recently played songs will be loaded here -->
+                        <div class="empty-state">
+                            <span class="material-symbols-outlined">history</span>
+                            <p>No recently played songs</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Playlists Section -->
+            <section id="playlists-section" class="dashboard-section">
+                <h2>Your Playlists</h2>
+                <div class="playlists-container">
+                    <div class="playlists-header">
+                        <button id="create-playlist-btn" class="btn-primary">
+                            <span class="material-symbols-outlined">add</span>
+                            Create Playlist
+                        </button>
+                    </div>
+                    <div class="playlists-grid" id="playlists-grid">
+                        <!-- Playlists will be loaded here -->
+                        <div class="empty-state">
+                            <span class="material-symbols-outlined">playlist_add</span>
+                            <p>No playlists yet</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Create Playlist Modal -->
+    <div id="create-playlist-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Playlist</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="create-playlist-form">
+                    <div class="form-group">
+                        <label for="playlist-name">Playlist Name</label>
+                        <input type="text" id="playlist-name" name="name" placeholder="Enter playlist name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="playlist-description">Description (optional)</label>
+                        <textarea id="playlist-description" name="description" placeholder="Enter playlist description"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Create Playlist</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Songs to Playlist Modal -->
+    <div id="add-songs-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Songs to Playlist</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="search-container">
+                    <input type="text" id="song-search" placeholder="Search for songs to add" class="form-control">
+                </div>
+                <div class="search-results">
+                    <div class="songs-list" id="search-results-list">
+                        <!-- Search results will be loaded here -->
+                        <div class="empty-state">
+                            <span class="material-symbols-outlined">search</span>
+                            <p>Search for songs to add to your playlist</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="selected-songs">
+                    <h4>Selected Songs</h4>
+                    <div class="songs-list" id="selected-songs-list">
+                        <!-- Selected songs will be shown here -->
+                        <div class="empty-state">
+                            <span class="material-symbols-outlined">playlist_add</span>
+                            <p>No songs selected yet</p>
+                        </div>
+                    </div>
+                </div>
+                <button id="add-songs-btn" class="btn-primary">Add Songs to Playlist</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Playlist Modal -->
+    <div id="edit-playlist-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Playlist</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="edit-playlist-form">
+                    <div class="form-group">
+                        <label for="edit-playlist-name">Playlist Name</label>
+                        <input type="text" id="edit-playlist-name" name="name" placeholder="Enter playlist name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-playlist-description">Description (optional)</label>
+                        <textarea id="edit-playlist-description" name="description" placeholder="Enter playlist description"></textarea>
+                    </div>
+                    <input type="hidden" id="edit-playlist-id">
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                </form>
+                <div class="playlist-songs">
+                    <h4>Playlist Songs</h4>
+                    <div class="songs-list" id="playlist-songs-list">
+                        <!-- Playlist songs will be shown here -->
+                        <div class="empty-state">
+                            <span class="material-symbols-outlined">music_note</span>
+                            <p>No songs in this playlist</p>
+                        </div>
+                    </div>
+                    <button id="add-more-songs-btn" class="btn-secondary">
+                        <span class="material-symbols-outlined">add</span>
+                        Add More Songs
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html> 
