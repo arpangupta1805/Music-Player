@@ -260,7 +260,7 @@ function renderAlbums(albums, container) {
         albumElement.className = 'album-item';
         albumElement.innerHTML = `
             <div class="album-cover">
-                <img src="${album.coverImage || `/${git_reponame}/svg/default-album.svg`}" alt="${album.title}">
+                <img src="${album.coverImage || `svg/default-album.svg`}" alt="${album.title}">
                 <div class="album-overlay">
                     <button class="play-album-btn" data-id="${album._id}">
                         <span class="material-symbols-outlined">play_arrow</span>
@@ -310,7 +310,7 @@ function renderPlaylists(playlists) {
         playlistElement.className = 'playlist-item';
         playlistElement.innerHTML = `
             <div class="playlist-cover">
-                <img src="${playlist.coverImage || `/${git_reponame}/svg/default-playlist.svg`}" alt="${playlist.name}">
+                <img src="${playlist.coverImage || `svg/default-playlist.svg`}" alt="${playlist.name}">
                 <div class="playlist-overlay">
                     <button class="play-playlist-btn" data-id="${playlist._id}">
                         <span class="material-symbols-outlined">play_arrow</span>

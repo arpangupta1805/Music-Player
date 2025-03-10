@@ -652,7 +652,7 @@ function updateLikedSongsDisplay() {
             <p>${song.folder}</p>
           </div>
           <div class="liked-song-actions">
-            <img src="/${git_reponame}/svg/play.svg" alt="play button" class="play-btn">
+            <img src="svg/play.svg" alt="play button" class="play-btn">
             <button class="unlike-btn">
               <span class="material-symbols-outlined">favorite</span>
             </button>
@@ -1290,7 +1290,7 @@ function showSongs(songs) {
           <span class="tab-space">${song.folder}</span>
           <span id="album_name" hidden>${song.albumName}</span>
         </div>
-        <img id="playbtn" src="/${git_reponame}/svg/play.svg" alt="Play Button">
+        <img id="playbtn" src="svg/play.svg" alt="Play Button">
       </div>
     `;
     albumList.innerHTML += songItem;
@@ -1732,7 +1732,7 @@ function displaySongsInUI(songs) {
             <p>${artist}</p>
           </div>
         </div>
-        <img id="playbtn" src="/${git_reponame}/svg/play.svg" alt="Play Button">
+        <img id="playbtn" src="svg/play.svg" alt="Play Button">
       </li>`;
   });
 }
@@ -1757,7 +1757,7 @@ function displaySongsFromFileSystem(songs) {
               <p>${songDetail[1]}</p>
             </div>
           </div>
-          <img id="playbtn" src="/${git_reponame}/svg/play.svg" alt="Play Button">
+          <img id="playbtn" src="svg/play.svg" alt="Play Button">
         </li>`;
     } else {
       songUL.innerHTML += `
@@ -1767,7 +1767,7 @@ function displaySongsFromFileSystem(songs) {
           <div class="info">
             <h5>${songDetail[0]}</h5>
           </div>
-          <img id="playbtn" src="/${git_reponame}/svg/play.svg" alt="Play Button">
+          <img id="playbtn" src="svg/play.svg" alt="Play Button">
         </li>`;
     }
   });
@@ -1796,7 +1796,7 @@ async function getAlbums() {
           const folder = album.folderName;
           cardContainer.innerHTML += `
             <div class="card" data-folder="${folder}">
-              <img class="cardimage" src="${server_url}/songs/${folder}/cover.jpg" alt="${album.title} cover" onerror="this.src='/${git_reponame}/svg/music-note.svg';">
+              <img class="cardimage" src="${server_url}/songs/${folder}/cover.jpg" alt="${album.title} cover" onerror="this.src='svg/music-note.svg';">
               <div>
                 <h2>${album.title}</h2>
                 <p>${album.artist || 'Unknown Artist'}</p>
@@ -1849,14 +1849,14 @@ function populateFeaturedSection(albums) {
       featuredCarousel.innerHTML += `
         <div class="featured-card" data-folder="${folder}">
           <div class="featured-image">
-            <img src="${server_url}/songs/${folder}/cover.jpg" alt="${album.title} cover" onerror="this.src='/${git_reponame}/svg/music-note.svg';">
+            <img src="${server_url}/songs/${folder}/cover.jpg" alt="${album.title} cover" onerror="this.src='svg/music-note.svg';">
           </div>
           <div class="featured-info">
             <h3>${album.title}</h3>
             <p>${album.artist || 'Unknown Artist'}</p>
           </div>
           <div class="play-overlay">
-            <img src="/${git_reponame}/svg/play.svg" alt="play button" class="play">
+            <img src="svg/play.svg" alt="play button" class="play">
           </div>
         </div>
       `;
@@ -1917,12 +1917,12 @@ async function initializeRecentlyPlayed() {
       <div class="recently-played-item" 
            data-folder="${song.folder}" 
            data-song="${song.name}">
-        <img src='${server_url}/songs/${song.folder}/cover.jpg' alt='Album cover' onerror="this.src='/${git_reponame}/svg/music-note.svg';">
+        <img src='${server_url}/songs/${song.folder}/cover.jpg' alt='Album cover' onerror="this.src='svg/music-note.svg';">
         <div class="song-info">
           <h4>${formatSongName(song.name)}</h4>
           <p>${song.folder}</p>
         </div>
-        <img src="/${git_reponame}/svg/play.svg" alt="play button" class="play-btn">
+        <img src="svg/play.svg" alt="play button" class="play-btn">
       </div>
     `).join('');
     
@@ -2172,7 +2172,7 @@ function updateAlbumArt(folderName) {
   const albumArt = document.querySelector('.album-art');
   
   if (folderName) {
-    albumArt.innerHTML = `<img src="${server_url}/songs/${folderName}/cover.jpg" alt="Album cover" onerror="this.src='/${git_reponame}/svg/music-note.svg';">`;
+    albumArt.innerHTML = `<img src="${server_url}/songs/${folderName}/cover.jpg" alt="Album cover" onerror="this.src='svg/music-note.svg';">`;
   }
 }
 /**
@@ -2224,7 +2224,7 @@ async function fallbackGetAlbums() {
     albumsInfo.forEach(({ folder, data }) => {
       cardContainer.innerHTML += `
         <div class="card" data-folder="${folder}">
-          <img class="cardimage" src="${server_url}/songs/${folder}/cover.jpg" alt="${data.title} cover" onerror="this.src='/${git_reponame}/svg/music-note.svg';">
+          <img class="cardimage" src="${server_url}/songs/${folder}/cover.jpg" alt="${data.title} cover" onerror="this.src='svg/music-note.svg';">
           <div>
             <h2>${data.title}</h2>
             <p>${data.artist || 'Unknown Artist'}</p>
@@ -2285,14 +2285,14 @@ function displayFeaturedPlaylists(albums) {
       featuredCarousel.innerHTML += `
         <div class="featured-card" data-folder="${folder}">
           <div class="featured-image">
-            <img src="${server_url}/songs/${folder}/cover.jpg" alt="${title} cover" onerror="this.src='/${git_reponame}/svg/music-note.svg';">
+            <img src="${server_url}/songs/${folder}/cover.jpg" alt="${title} cover" onerror="this.src='svg/music-note.svg';">
           </div>
           <div class="featured-info">
             <h3>${title}</h3>
             <p>${artist}</p>
           </div>
           <div class="play-overlay">
-            <img src="/${git_reponame}/svg/play.svg" alt="play button" class="play">
+            <img src="svg/play.svg" alt="play button" class="play">
           </div>
         </div>
       `;
