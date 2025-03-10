@@ -2,7 +2,7 @@
  * Tuneflow Music Player
  * A modern music player with API integration
  */
-// curl -X POST ${server_url}/api/albums/import to import albums we have to run this commamd
+// curl -X POST https://musicplayerbackend-a49q.onrender.com/api/albums/import to import albums we have to run this commamd
 // DOM Elements
 const playBtn = document.getElementById("play");
 const previousBtn = document.getElementById("previous");
@@ -24,7 +24,7 @@ let songList = [];
 let folders = [];
 
 // API endpoints
-const server_url = 'http://localhost:5002';
+const server_url = 'https://musicplayerbackend-a49q.onrender.com';
 const API_URL = `${server_url}/api`;
 const ENDPOINTS = {
   ALBUMS: `${API_URL}/albums`,
